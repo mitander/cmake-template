@@ -10,7 +10,7 @@ project(
 
 option(BUILD_STATIC_LIBS "Build static libraries" ON)
 option(BUILD_DYNAMIC_LIBS "Build dynamic libraries" ON)
-option(BUILD_EXAMPLE_PROGRAMS "Build example program" ON)
+option(BUILD_EXAMPLE "Build example program" ON)
 option(BUILD_TESTS "Build tests" OFF)
 
 set(CMAKE_INSTALL_LIBDIR "lib" CACHE PATH "library install dir (lib)")
@@ -80,7 +80,7 @@ if(BUILD_STATIC_LIBS)
     install(TARGETS mylib_static DESTINATION ${CMAKE_INSTALL_LIBDIR})
 endif()
 
-if(BUILD_EXAMPLE_PROGRAMS)
+if(BUILD_EXAMPLE)
     add_executable(example examples/example.cpp)
     set_target_properties(example PROPERTIES
         LINKER_LANGUAGE CXX
@@ -101,6 +101,6 @@ message("\n"
     "* Build Type                   : ${CMAKE_BUILD_TYPE}\n"
     "* Build static libs            : ${BUILD_STATIC_LIBS}\n"
     "* Build dynamic libs           : ${BUILD_DYNAMIC_LIBS}\n"
-    "* Build examples               : ${BUILD_EXAMPLE_PROGRAMS}\n"
+    "* Build example                : ${BUILD_EXAMPLE}\n"
     "* Build tests                  : ${BUILD_TESTS}\n"
 )
